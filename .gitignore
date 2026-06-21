@@ -7,6 +7,7 @@ env/
 *.pt
 *.pkl
 dataset.csv
+vandalism_mlp_dataset.csv
 ucf_crime_dataset.csv
 data/*.zip
 datasets/
@@ -26,6 +27,5 @@ models/*
 !models/ucf_scaler.pkl
 !models/ucf_mlp_report.txt
 !models/ucf_mlp_evaluation.png
-
-
+!models/vandalism_mlp.pkl
 .vscode/

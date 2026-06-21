@@ -1,0 +1,7 @@
+{
+  "cases": [
+    {"video": "assets/vandalismbrasil1.mp4", "expected": "vandalism"},
+    {"video": "assets/vandalismbrasil2.mp4", "expected": "vandalism"},
+    {"video": "assets/YTDown_YouTube_Times-Square-Crowd-People-2-HD-Video-Bac_Media_P0wNIsAjht8_001_1080p.mp4", "expected": "normal"}
+  ]
+}
