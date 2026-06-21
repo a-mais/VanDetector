@@ -27,6 +27,32 @@ A documentacao tecnica completa esta em:
 UCF_MLP_ABORDAGEM.md
 ```
 
+## Detector de vandalismo dos assets
+
+O classificador UCF (`crime`/`normal`) continua disponivel, mas não é a
+referência para vandalismo: o UCF-Crime não possui as classes `vandalism`,
+`breaking_the_door` e `destroying`. Para os assets deste projeto, use o fluxo
+especializado `YOLO -> features de caixas -> MLP`:
+
+```powershell
+.\venv\Scripts\python.exe validate_vandalism_assets.py
+```
+
+Ele avalia os casos descritos em `asset_cases.json`, falha com código diferente
+de zero se algum deles não for classificado corretamente e salva o resultado em
+`outputs/validation/vandalism_assets.csv`. A configuração atual verificou os
+três assets versionados: dois vídeos de vandalismo e um vídeo normal.
+
+Por padrão, a validação espera os pesos YOLO locais em
+`runs/detect/vandalism2/weights/best.pt`. O diretório `runs/` não é versionado;
+em outro ambiente, informe pesos compatíveis por meio de `--weights`.
+
+O modelo usado por esse fluxo é `models/vandalism_mlp.pkl`; ele foi treinado
+com features de detecções das classes `normal` e `vandalism-B5md`. O script
+`train_vandalism_mlp.py` é mantido para experimentos com o conjunto combinado
+que inclui `breaking_the_door` e `destroying`; um novo modelo só deve substituir
+o modelo de produção após passar novamente por `validate_vandalism_assets.py`.
+
 Os arquivos da abordagem anterior Roboflow/YOLO foram movidos para:
 
 ```text
